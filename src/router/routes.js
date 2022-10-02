@@ -12,9 +12,6 @@ const routes = [
       },
       {
         path: '/about', component: () => import('pages/AboutPage.vue'),
-        meta: {
-          auth: true,
-        }
       },
     ],
   },
