@@ -2,21 +2,23 @@
 
     <q-card class="my-card absolute-center">
 
-        <div class="q-pa-md" style="max-width: 400px">
-            <img class="text-center" src="https://unl.edu.ec/sites/default/files/inline-images/unl_0.png">
+        <div class="q-pa-md" style="min-width: 300px">
+            <img src="https://unl.edu.ec/sites/default/files/inline-images/unl_0.png">
             <p class="text-rigth">No tienes una cuenta
                 <a href="/register">Registrate</a>
             </p>
             <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
                 <q-input class="q-pt-md" filled v-model="email" label="Email *" lazy-rules
-                    :rules="[val => val && val.length > 0 || 'El campo se encuentra vacio']" />
+                    :rules="[
+                    val => val && val.length > 0 || 'El campo se encuentra vacio',
+                    val => val && /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i.test(val) || 'Formato email no válido'] " />
 
                 <q-input filled type="password" v-model="password" label="Contraseña *" lazy-rules
                     :rules="[val => val && val.length > 0 || 'El campo se encuentra vacio']" />
 
                 <div>
-                    <q-btn label="Login" type="submit" color="primary" />
-                    <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+                    <q-btn label="Ingresar" type="submit" color="primary" />
+                    <q-btn label="Resetear" type="reset" color="primary" flat class="q-ml-sm" />
                 </div>
             </q-form>
 
@@ -65,6 +67,10 @@ const onReset = () => {
 </script>
   
 <style lang="scss">
+body {
+    background-color: $light-blue-1;
+}
+
 h6 {
     text-align: center;
 }
@@ -85,7 +91,13 @@ a {
 }
 
 img {
-    width: 15rem;
-    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+.my-card {
+    padding: 20px;
 }
 </style>

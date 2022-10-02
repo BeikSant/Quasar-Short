@@ -1,7 +1,6 @@
 <template>
   <q-page padding>
-    <q-btn @click="access">Login</q-btn>
-    <q-btn @click="crearLink">Link</q-btn>
+    <q-btn @click="logout">Logout</q-btn>
     {{ token }} - {{ expiresIn}}
   </q-page>
 </template>
@@ -10,27 +9,21 @@
 import { api } from 'src/boot/axios'
 import { ref } from "vue"
 import { Cookies } from 'quasar'
-
-
-
+import { useAuthStore } from 'src/stores/auth-stores'
+import { useRouter } from "vue-router"
 
 const token = ref("")
 const expiresIn = ref("")
+const auth = useAuthStore();
+const router = useRouter();
 
 const cookies = Cookies.getAll()
 console.log(cookies);
 
+const logout = async () => {
+  await auth.logout();
+  return router.push({ path: '/login' });
+}
 
-const refreshToken = async () => {
-  try {
-    const res = await api.get("/auth/refresh");
-    console.log(res.data);
-    token.value = res.data.token;
-    expiresIn.value = res.data.expiresIn;
-  } catch (e) {
-    console.log(e);
-
-  }
-};
 
 </script>

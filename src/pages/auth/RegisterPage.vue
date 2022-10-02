@@ -2,8 +2,8 @@
 
     <q-card class="my-card absolute-center">
 
-        <div class="q-pa-md" style="max-width: 400px">
-            <h6 class="q-mt-md q-mb-md">Universidad Nacional de Loja</h6>
+        <div class="q-pa-md" style="min-width: 300px">
+            <img class="text-center" src="https://unl.edu.ec/sites/default/files/inline-images/unl_0.png">
             <p class="text-rigth">Ya posees una cuenta
                 <a href="/login">Ingresar</a>
             </p>
@@ -18,8 +18,8 @@
                     :rules="[val => val && val.length > 0 || 'El campo se encuentra vacio']" />
 
                 <div>
-                    <q-btn label="Submit" type="submit" color="primary" />
-                    <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+                    <q-btn label="Registrar" type="submit" color="primary" />
+                    <q-btn label="Resetear" type="reset" color="primary" flat class="q-ml-sm" />
                 </div>
             </q-form>
 
@@ -86,5 +86,20 @@ a {
     &:visited {
         color: $primary;
     }
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+.my-card {
+    padding: 20px;
+}
+
+body {
+    background-color: $light-blue-1;
 }
 </style>
